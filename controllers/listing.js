@@ -1,4 +1,6 @@
 const Listing = require("../models/listing.js");
+const axios = require("axios");
+let MAP_API_KEY = process.env.MAP_API_KEY
 
 
 
@@ -33,21 +35,17 @@ module.exports.createListing = async(req,res) => {
     
     const newListing = new Listing(req.body.listing);
     
-    // if (!newListing.title){
-    //     throw new ExpressError(400, "Title is missing!");
-    // }
-    // if (!newListing.description){
-    //     throw new ExpressError(400, "Description is missing!");
-    // }
-    // if (!newListing.price){
-    //     throw new ExpressError(400, "Price is missing!");
-    // }
-    // if (!newListing.country){
-    //     throw new ExpressError(400, "Country is missing!");
-    // }
-    // if (!newListing.location){
-    //     throw new ExpressError(400, "Location is missing!");
-    // }
+    // Get coordinates from MapTiler
+    const geoResponse = await axios.get(
+        `https://api.maptiler.com/geocoding/${newListing.location}.json?key=${MAP_API_KEY}`
+    );
+    // Extract coordinates
+    const coordinates = geoResponse.data.features[0].geometry.coordinates;
+    // Add geometry field
+    newListing.geometry = {
+        type: "Point",
+        coordinates: coordinates
+    };
 
     newListing.owner = req.user._id;
     newListing.image = {url, filename};
