@@ -36,6 +36,26 @@ const listingSchema = new Schema({
             required: true
         }
     },
+    amenities: {
+    type: [String],
+    enum: [
+        "free wifi",
+        "complimentary breakfast",
+        "beach front",
+        "air conditioning",
+        "restaurant",
+        "free parking",
+        "swimming pool",
+        "room service",
+        "camping",
+        "boat house",
+        "fitness center",
+        "spa",
+        "pet friendly",
+        "mountain view",
+        "arctic view"
+    ]
+},
 });
 
 

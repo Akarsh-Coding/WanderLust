@@ -7,8 +7,27 @@ let MAP_API_KEY = process.env.MAP_API_KEY
 
 // Index Route
 module.exports.index = async (req,res) =>{
-    const allListing=await Listing.find({});
-    res.render("listings/index.ejs", {allListing})
+    const {search, amenities} = req.query;
+    let filter = {};
+    let allListing;
+    if (search){
+        allListing = await Listing.find({
+            $or: [
+                {title: {$regex: search, $options:"i"}},
+                {location: {$regex: search, $options:"i"}},
+                {country: {$regex: search, $options:"i"}},
+                {description: {$regex: search, $options:"i"}},
+            ]
+        });
+    } else if (amenities) {
+        filter.amenities ={
+            $all: [].concat(amenities)
+        };
+        allListing = await Listing.find(filter);
+    } else {
+        allListing = await Listing.find({});
+    }
+    res.render("listings/index.ejs", {allListing, selectedAmenities: [].concat(amenities || [])})
 };
 
 // New Route

@@ -8,45 +8,90 @@
     <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" name="listing[title]" class="form-control" placeholder="Add a catchy Title" required>
+            <input type="text" name="listing[title]" id="title" class="form-control" placeholder="Add a catchy Title" required>
             <div class="valid-feedback">TItle Looks good!</div>
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea name="listing[description]" class="form-control" placeholder="Enter Description" required></textarea>
+            <textarea name="listing[description]" id="description" class="form-control" placeholder="Enter Description" required></textarea>
             <div class="invalid-feedback">Please enter a short description</div>
-        
         </div>
         
         <div class="mb-3">
             <label for="image" class="form-label">Upload Image</label>
-            <input type="file" name="listing[image]" class="form-control" required>
+            <input type="file" name="listing[image]" id="image" class="form-control" required>
         </div>
 
         <div class="row">
             <div class="mb-3 col-md-4">
                 <label for="price" class="form-label">Price</label>
-                <input  name="listing[price]" class="form-control" placeholder="Enter Price" required>
+                <input  name="listing[price]" class="form-control" id="price" placeholder="Enter Price" required>
             <div class="invalid-feedback">Price should be valid</div>
             </div>
 
             <div class="mb-3 col-md-8" >
                 <label for="country" class="form-label">Country</label>
-                <input type="text" name="listing[country]" class="form-control" placeholder="Enter Country" required>
+                <input type="text" name="listing[country]" id="country" class="form-control" placeholder="Enter Country" required>
             <div class="invalid-feedback">Country name should be valid</div>
             </div>
         </div>
-
-        
         
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input type="text" name="listing[location]" class="form-control" placeholder="Enter Location" required>
+            <input type="text" name="listing[location]" id="location" class="form-control" placeholder="Enter Location" required>
             <div class="invalid-feedback">Location should be valid</div>
         </div>
-        
 
+
+        <div class="mb-3">
+            <label class="form-label">Property Features</label><br>
+
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="wifi" value="free wifi">
+            <label class="btn btn-outline-primary mb-2" for="wifi">Free Wi-Fi</label>
+
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="breakfast" value="complimentary breakfast">
+            <label class="btn btn-outline-primary mb-2" for="breakfast">Breakfast</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="ac" value="air conditioning">
+            <label class="btn btn-outline-primary mb-2" for="ac">Air Conditioning</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="restaurant" value="restaurant">
+            <label class="btn btn-outline-primary mb-2" for="restaurant">Restaurant</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="parking" value="free parking">
+            <label class="btn btn-outline-primary mb-2" for="parking">Parking</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="pool" value="swimming pool">
+            <label class="btn btn-outline-primary mb-2" for="pool">Swimming Pool</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="room_service" value="room service">
+            <label class="btn btn-outline-primary mb-2" for="room_service">Room Service</label>
+            
+                        <input type="checkbox" class="btn-check" name="listing[amenities][]" id="beachfront" value="beach front">
+                        <label class="btn btn-outline-primary mb-2" for="beachfront">Beach Front</label>
+
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="mountain_view" value="mountain view">
+            <label class="btn btn-outline-primary mb-2" for="mountain_view">Mountain View</label>
+
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="arctic_view" value="arctic view">
+            <label class="btn btn-outline-primary mb-2" for="arctic_view">Arctic View</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="camping" value="camping">
+            <label class="btn btn-outline-primary mb-2" for="camping">Camping</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="boat_house" value="boat house">
+            <label class="btn btn-outline-primary mb-2" for="boat_house">Boat House</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="gym" value="fitness center">
+            <label class="btn btn-outline-primary mb-2" for="gym">Fitness Center</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="spa" value="spa">
+            <label class="btn btn-outline-primary mb-2" for="spa">Spa & Wellness</label>
+            
+            <input type="checkbox" class="btn-check" name="listing[amenities][]" id="pet_friendly" value="pet friendly">
+            <label class="btn btn-outline-primary mb-2" for="pet_friendly">Pet Friendly</label>
+        </div>
         
         <button class="btn btn-dark add-btn">Add</button>
         <br><br><br>

@@ -40,8 +40,6 @@
                 <div class="invalid-feedback">Country is required</div>
             </div>
         </div>
-
-        
         
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
@@ -49,7 +47,42 @@
             <div class="invalid-feedback">Location is required</div>
         </div>
         
+        <%
+const amenitiesList = [
+    { value: "free wifi", label: "Free Wi-Fi", id: "wifi" },
+    { value: "complimentary breakfast", label: "Breakfast", id: "breakfast" },
+    { value: "beach front", label: "Beach Front", id: "beachfront" },
+    { value: "air conditioning", label: "Air Conditioning", id: "ac" },
+    { value: "restaurant", label: "Restaurant", id: "restaurant" },
+    { value: "free parking", label: "Parking", id: "parking" },
+    { value: "swimming pool", label: "Swimming Pool", id: "pool" },
+    { value: "room service", label: "Room Service", id: "room_service" },
+    { value: "camping", label: "Camping", id: "camping" },
+    { value: "boat house", label: "Boat House", id: "boat_house" },
+    { value: "fitness center", label: "Fitness Center", id: "gym" },
+    { value: "spa", label: "Spa & Wellness", id: "spa" },
+    { value: "pet friendly", label: "Pet Friendly", id: "pet_friendly" },
+    { value: "mountain view", label: "Mountain View", id: "mountain_view" },
+    { value: "arctic view", label: "Arctic View", id: "arctic_view" }
+];
+%>
 
+<div class="mb-3">
+    <label class="form-label">Property Features</label><br>
+
+    <% amenitiesList.forEach(a => { %>
+        <input type="checkbox"
+                class="btn-check"
+                name="listing[amenities][]"
+                id="<%= a.id %>"
+                value="<%= a.value %>"
+                <%= listing.amenities && listing.amenities.includes(a.value) ? "checked" : "" %>>
+
+        <label class="btn btn-outline-primary me-2 mb-2" for="<%= a.id %>">
+            <%= a.label %>
+        </label>
+    <% }) %>
+</div>
         
         <button class="btn btn-dark edit-btn mt-3">Edit</button>
         <br><br><br>

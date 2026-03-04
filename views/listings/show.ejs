@@ -17,6 +17,22 @@
                 <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
                 <p class="card-text"><%= listing.location %></p>
                 <p class="card-text"><%= listing.country %></p>
+                <h5>Property Features:</h5>
+                <% if (listing.amenities && listing.amenities.length > 0) { %>
+                    <div class="amenities-container">
+                        <% listing.amenities.forEach(function(amenity) { %>
+                            <span class="amenity-badge">
+                                <%= amenity %>
+                            </span>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <div class="amenities-container">
+                        <span class="amenity-badge">
+                            No amenities listed.
+                        </span>
+                    </div>
+                <% } %>
 
             </div>
         </div>

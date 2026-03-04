@@ -1,11 +1,152 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-    <h3>All Listings</h3>
-    <!-- <form action="/listings/new">
-        <button>Create New Listing</button>
-    </form> -->
+<% const selected = selectedAmenities || []; %>
 
-    <div class="row  row-cols-md-3 row-cols-sm-1 row-cols-1">
+<div id="filters">
+    <button class="scroll-btn left-btn d-none d-sm-block">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <div class="filter-wrapper">
+        <div class="filter-frame" id="filterContainer">
+
+            <div class="filter">
+                <a href="/listings?amenities=free wifi" 
+                class="filter text-decoration-none text-dark <%= selected.includes('free wifi') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-wifi"></i></div>
+                    <p>Free Wi-Fi</p>
+                </a>
+            </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=air conditioning" 
+                class="filter text-decoration-none text-dark <%= selected.includes('air conditioning') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-temperature-arrow-down"></i></div>
+                    <p>AC</p>
+                </a>
+            </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=free parking" 
+                class="filter text-decoration-none text-dark <%= selected.includes('free parking') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-square-parking"></i></div>
+                    <p>Free Parking</p>
+                </a>
+            </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=complimentary breakfast" 
+                class="filter text-decoration-none text-dark <%= selected.includes('complimentary breakfast') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-bowl-rice"></i></div>
+                    <p>Breakfast</p>
+                </a>
+            </div>
+            
+            <div class="filter">
+                <a href="/listings?amenities=restaurant" 
+                class="filter text-decoration-none text-dark <%= selected.includes('restaurant') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-utensils"></i></div>
+                    <p>Restaurant</p>
+                </a>
+            </div>
+            
+            <div class="filter">
+                <a href="/listings?amenities=room service" 
+                class="filter text-decoration-none text-dark <%= selected.includes('room service') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-bell-concierge"></i></div>
+                    <p>Service</p>
+                </a>
+            </div>
+    
+                <div class="filter">
+                    <a href="/listings?amenities=beach front" 
+                    class="filter text-decoration-none text-dark <%= selected.includes('beach front') ? 'active-filter' : 'text-dark' %>">
+                        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                        <p>Beach Front</p>
+                    </a>
+                </div>
+                
+                <div class="filter">
+                    <a href="/listings?amenities=arctic view" 
+                    class="filter text-decoration-none text-dark <%= selected.includes('arctic view') ? 'active-filter' : 'text-dark' %>">
+                        <div><i class="fa-regular fa-snowflake"></i></div>
+                        <p>Arctic View</p>
+                    </a>
+                </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=mountain view" 
+                class="filter text-decoration-none text-dark <%= selected.includes('mountain view') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-mountain-sun"></i></div>
+                    <p>Mountains</p>
+                </a>
+            </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=camping" 
+                class="filter text-decoration-none text-dark <%= selected.includes('camping') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-campground"></i></div>
+                    <p>Camping</p>
+                </a>
+            </div>
+            
+            <div class="filter">
+                <a href="/listings?amenities=boat house" 
+                class="filter text-decoration-none text-dark <%= selected.includes('boat house') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-anchor"></i></div>
+                    <p>Boat House</p>
+                </a>
+            </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=pet friendly" 
+                class="filter text-decoration-none text-dark <%= selected.includes('pet friendly') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-dog"></i></div>
+                    <p>Pet Friendly</p>
+                </a>
+            </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=swimming pool" 
+                class="filter text-decoration-none text-dark <%= selected.includes('swimming pool') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-person-swimming"></i></div>
+                    <p>Pools</p>
+                </a>
+            </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=fitness center" 
+                class="filter text-decoration-none text-dark <%= selected.includes('fitness center') ? 'active-filter' : 'text-dark' %>">
+                    <div><i class="fa-solid fa-dumbbell"></i></div>
+                    <p>Gym</p>
+                </a>
+            </div>
+
+            <div class="filter">
+                <a href="/listings?amenities=spa"
+                class="filter text-decoration-none text-dark <%= selected.includes('spa') ? 'active-filter' : '' %>">
+                    <div><i class="fa-solid fa-spa"></i></div>
+                    <p>Spa</p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <button class="scroll-btn right-btn d-none d-sm-block">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <div class="tax-toggle ms-auto">
+        <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+            <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+        </div>
+    </div>
+</div>
+
+<div class="row  row-cols-md-3 row-cols-sm-1 row-cols-1 mt-3">
+    <% if(allListing.length === 0) { %>
+    <div class="alert alert-danger col-6 offset-4" role="alert">
+        <h3 class="text-center mt-3">No listings found.</h3>
+    </div>
+    <% } %>
     <% for (let listing of allListing) { %>
         <a href="/listings/<%= listing._id %>" class="listing-link">
             <div class="card col listing-card" >
@@ -15,11 +156,10 @@
                     <p class="card-text">
                         <b><%= listing.title %></b><br>
                         &#8377; <%= listing.price.toLocaleString("en-IN") %>/night
+                        <i class="tax-info">&nbsp; +18% GST</i>
                     </p>
                 </div>
             </div>
         </a>
     <% } %>
 </div>
-
-</body>
