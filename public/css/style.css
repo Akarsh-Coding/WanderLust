@@ -14,6 +14,7 @@ body {
 .navbar {
     height: 5rem;
     background-color: white;
+    z-index: 2;
 }
 
 .fa-compass {
@@ -45,6 +46,17 @@ display: inline;
 .search-inp {
     border-radius: 25px;
     padding: 0.5rem 3rem;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: white; /* Or your preferred theme color */
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border-bottom: 1px solid gray;
+        margin-top: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
 }
 
 /* Filter Bar */
@@ -131,6 +143,20 @@ display: inline;
     white-space: nowrap;
 }
 
+.tax-mobile{
+    display: none;
+}
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+    .tax-desktop{
+        display: none;
+    }
+    .tax-mobile{
+        display: inline;
+    }
+}
+
 /* Cards */
 .listing-card {
     border: none !important;
@@ -139,12 +165,12 @@ display: inline;
 
 .card-img-top {
     border-radius: 1rem !important;
-    width: 100% !important;
+    width: 100% ;
     object-fit: cover !important;
 }
 
 .card-body {
-    padding: 0 !important;
+    padding: 3px !important;
 }
 
 .card-text p {
@@ -178,14 +204,31 @@ display: inline;
 }
 
 .show-card {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+/* Edit Image Preview */
+.edit-img-preview {
+    height: 150px;      /* Keeps the preview compact */
+    width: 200px;       /* Or use 'auto' to maintain aspect ratio */
+    object-fit: cover;  /* Ensures the image fills the space without stretching */
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 /* Map */
 #map {
-    height: 400px;
-    width: 95vh;
+    height: 400px; /* You can reduce this for mobile using media queries */
+    width: 100%;   /* This ensures it fills the Bootstrap column */
+}
+
+/* Make the map shorter on small mobile screens */
+@media (max-width: 768px) {
+    #map {
+        height: 300px;
+    }
 }
 
 
@@ -209,6 +252,12 @@ display: inline;
 .f-info-socials i{
     font-size: 1.2rem;
     margin-right: 1rem;
+    opacity: 0.9;
+}
+.f-info-socials i:hover{
+    opacity: 1;
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .f-info {

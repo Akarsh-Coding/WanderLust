@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate") %>
 <body>
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-md-8 offset-md-2">
 
         <br><br>
     <h3>Edit your Listing</h3>
@@ -19,8 +19,8 @@
         </div>
         
         <div class="mb-3">
-            <label for="image preview" class="form-label">Image Preview</label><br>
-            <img src="<%= originalImageUrl %>" alt="Previous image preview" >
+            <label for="image preview" class="form-label">Current Image Preview</label><br>
+            <img src="<%= originalImageUrl %>" alt="Previous image preview" class="img-thumbnail edit-img-preview">
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Upload New Image</label>
